@@ -1,0 +1,3 @@
+include ':tracker'
+include ':app'
+rootProject.name = "DataTracker"
