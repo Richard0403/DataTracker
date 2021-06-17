@@ -1,5 +1,6 @@
 package com.richard.datatracker.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ class CommonActivity : AppCompatActivity() {
 
         btn_click.setOnClickListener {
             Toast.makeText(this, "点击了我", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, CoverActivity::class.java))
         }
 
         btn_click.setTag(TrackerConstants.VIEW_TAG_UNIQUE_NAME, btn_click.hashCode().toString())
