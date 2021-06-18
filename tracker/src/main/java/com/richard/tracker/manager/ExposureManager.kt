@@ -214,7 +214,11 @@ class ExposureManager {
         currentVisibleViewMap: MutableMap<String, ExposureModel?>
     ) {
 
-        val params = view.getTag(TrackerConstants.TAG_EXPLORE_DATA) as HashMap<String, Any?>
+        var params = view.getTag(TrackerConstants.TAG_EXPLORE_DATA) as MutableMap<String, Any?>?
+        if (params == null) {
+            params = view.getTag(TrackerConstants.TAG_EXPLORE_AND_CLICK_DATA) as MutableMap<String, Any?>?
+        }
+
         val viewTag = view.getTag(TrackerConstants.VIEW_TAG_UNIQUE_NAME) as String?
 
         val isWindowChange = view.hasWindowFocus()

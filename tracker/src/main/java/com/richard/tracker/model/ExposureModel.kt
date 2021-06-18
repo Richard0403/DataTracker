@@ -19,7 +19,7 @@ class ExposureModel : Cloneable{
     var beginTime: Long = 0
     var endTime: Long = 0
 
-    var params: HashMap<String, Any?>? = null
+    var params: MutableMap<String, Any?>? = null
 
     /**
      * deep copy
@@ -35,7 +35,7 @@ class ExposureModel : Cloneable{
             TrackerLog.e(e.message)
         }
         if (exposureModel != null && params != null) {
-            exposureModel.params = params!!.clone() as HashMap<String, Any?>?
+            exposureModel.params = params?.toMutableMap() as HashMap<String, Any?>?
         }
         return exposureModel!!
     }

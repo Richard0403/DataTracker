@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import com.facebook.drawee.view.SimpleDraweeView
 import com.richard.datatracker.R
-import com.richard.datatracker.utils.ViewTagUtils.addExposureTag
+import com.richard.datatracker.utils.ViewTagUtils.addExposureOrClickTag
 import kotlinx.android.synthetic.main.activity_view_pager.*
 
 
@@ -52,7 +50,7 @@ class ViewPagerActivity : BaseActivity() {
             container.addView(itemView)
 
             val exposureData = mutableMapOf<String, Any?>("viewPager" to paths[position] + "===" + position)
-            imageView.addExposureTag(getPageCode(), exposureData)
+            imageView.addExposureOrClickTag(getPageCode(), exposureData)
 
             return itemView
         }

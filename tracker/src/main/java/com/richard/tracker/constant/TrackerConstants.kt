@@ -12,9 +12,19 @@ package com.richard.tracker.constant
 object TrackerConstants {
 
     /**
-     * 曝光
+     * 曝光数据
      */
     const val TAG_EXPLORE_DATA = -9002
+    /**
+     * 点击数据
+     */
+    const val TAG_CLICK_DATA = -9002
+    /**
+     * 曝光和点击数据公用
+     */
+    const val TAG_EXPLORE_AND_CLICK_DATA = -9002
+
+
 
     /**
      * view的唯一标识

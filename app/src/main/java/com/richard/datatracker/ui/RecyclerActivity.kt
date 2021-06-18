@@ -1,12 +1,12 @@
 package com.richard.datatracker.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 import com.richard.datatracker.R
-import com.richard.datatracker.utils.ViewTagUtils.addExposureTag
+import com.richard.datatracker.utils.ViewTagUtils.addExposureOrClickTag
 import kotlinx.android.synthetic.main.activity_recycler.*
 
 class RecyclerActivity : BaseActivity() {
@@ -25,7 +25,11 @@ class RecyclerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler)
 
-        clv_content.adapter = RecyclerAdapter(networkImages)
+        clv_content.adapter = RecyclerAdapter(networkImages).apply {
+            setOnItemClickListener { adapter, view, position ->
+                Log.i("tag", "列表点击")
+            }
+        }
     }
 
 
@@ -38,7 +42,7 @@ class RecyclerActivity : BaseActivity() {
             iv_image.setImageURI(item)
 
             val exposureData = mutableMapOf<String, Any?>("RecyclerView" to item + "===" + holder.adapterPosition)
-            iv_image.addExposureTag(getPageCode(), exposureData)
+            holder.itemView.addExposureOrClickTag(getPageCode(), exposureData)
 
         }
 

@@ -44,10 +44,12 @@ object CommonHelper {
 
     fun isViewHasExposureTag(view: View): Boolean {
         return view.getTag(TrackerConstants.TAG_EXPLORE_DATA) != null
+                || view.getTag(TrackerConstants.TAG_EXPLORE_AND_CLICK_DATA) != null
     }
 
     fun isViewHasClickTag(view: View): Boolean {
-        return view.getTag(TrackerConstants.TAG_EXPLORE_DATA) != null
+        return view.getTag(TrackerConstants.TAG_CLICK_DATA) != null
+                || view.getTag(TrackerConstants.TAG_EXPLORE_AND_CLICK_DATA) != null
     }
 
     fun isSamplingHit(sample: Int): Boolean {

@@ -24,8 +24,11 @@ class ViewDelegate: View.AccessibilityDelegate() {
         TrackerLog.d("eventType: $eventType")
         if (eventType == AccessibilityEvent.TYPE_VIEW_CLICKED) {
             TrackerLog.d("click: $clickView")
-
-            val exposureData = clickView.getTag(TrackerConstants.TAG_EXPLORE_DATA) as MutableMap<String, Any?>?
+            //优先查找ClickData
+            var exposureData = clickView.getTag(TrackerConstants.TAG_CLICK_DATA) as MutableMap<String, Any?>?
+            if (exposureData == null) {
+                exposureData = clickView.getTag(TrackerConstants.TAG_EXPLORE_AND_CLICK_DATA) as MutableMap<String, Any?>?
+            }
             exposureData?.let {
                 DataProcess.commitClickParams(it)
             }

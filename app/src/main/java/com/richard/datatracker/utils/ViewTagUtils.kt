@@ -14,13 +14,18 @@ import com.richard.tracker.constant.TrackerConstants
  */
 object ViewTagUtils {
 
-    fun View.addExposureTag(pageCode: String, params: MutableMap<String, Any?>) {
+    /**
+     * @param tagType 默认TAG_EXPLORE_AND_CLICK_DATA，也就是曝光和点击的数据通用，
+     * 可单独设置TAG_EXPLORE_DATA 或者 TAG_CLICK_DATA
+     */
+    fun View.addExposureOrClickTag(pageCode: String, params: MutableMap<String, Any?>,
+                                   tagType: Int = TrackerConstants.TAG_EXPLORE_AND_CLICK_DATA) {
         setUniqueNameTag(this)
 
         val exposureData1 = mutableMapOf<String, Any?>()
         exposureData1[TrackerConstants.KEY_PAGE_CODE] = pageCode
         exposureData1[TrackerConstants.KEY_PARAM] = params
-        this.setTag(TrackerConstants.TAG_EXPLORE_DATA, exposureData1)
+        this.setTag(tagType, exposureData1)
     }
 
 

@@ -7,7 +7,7 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
 import com.bigkoo.convenientbanner.holder.Holder
 import com.facebook.drawee.view.SimpleDraweeView
 import com.richard.datatracker.R
-import com.richard.datatracker.utils.ViewTagUtils.addExposureTag
+import com.richard.datatracker.utils.ViewTagUtils.addExposureOrClickTag
 import kotlinx.android.synthetic.main.activity_banner.*
 
 /**
@@ -67,7 +67,7 @@ class BannerActivity : BaseActivity() {
             iv_image?.setImageURI(data)
 
             val exposureData = mutableMapOf<String, Any?>("text" to data + "===" + networkImages.indexOf(data))
-            iv_image?.addExposureTag(getPageCode(), exposureData)
+            iv_image?.addExposureOrClickTag(getPageCode(), exposureData)
         }
     }
 
