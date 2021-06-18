@@ -18,7 +18,9 @@ object PageCode {
         "CommonActivity" to "普通页面",
         "CoverActivity" to "测试跳转新页面",
         "ScrollActivity" to "滚动页面",
-        "ViewPagerActivity" to "viewPager页面"
+        "ViewPagerActivity" to "viewPager页面",
+        "BannerActivity" to "Banner页面",
+        "RecyclerActivity" to "列表页面"
     )
 
     fun Activity.getActivityPageCode(): String {

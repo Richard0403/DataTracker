@@ -1,10 +1,13 @@
 package com.richard.datatracker.ui
 
+import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import com.bigkoo.convenientbanner.ConvenientBanner
-import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
-import com.bigkoo.convenientbanner.holder.Holder
+import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.PagerAdapter
 import com.facebook.drawee.view.SimpleDraweeView
 import com.richard.datatracker.R
 import com.richard.datatracker.utils.ViewTagUtils.addExposureTag
@@ -12,6 +15,8 @@ import kotlinx.android.synthetic.main.activity_view_pager.*
 
 
 class ViewPagerActivity : BaseActivity() {
+
+
 
 
     private val networkImages = mutableListOf(
@@ -23,50 +28,48 @@ class ViewPagerActivity : BaseActivity() {
         "https://image10.kaishustory.com/kstory/admaster/830626ed-5983-496b-a7d2-38cc2308e847.png"
     )
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_pager)
 
 
-        val convenient = findViewById<ConvenientBanner<String>>(R.id.convenientBanner)
-        convenient.setPages(object : CBViewHolderCreator {
-            override fun createHolder(itemView: View?): Holder<String?> {
-                return NetWorkImageHolderView(itemView)
-            }
-
-            override fun getLayoutId(): Int {
-                return R.layout.item_banner
-            }
-
-        }, networkImages)
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        convenientBanner.startTurning(4000)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        convenientBanner.stopTurning()
+        view_pager.adapter = ViewPagerAdapter(networkImages)
     }
 
 
-    inner class NetWorkImageHolderView(itemView: View?) : Holder<String?>(itemView) {
-        var iv_image: SimpleDraweeView? = null
 
-        override fun initView(itemView: View) {
-            iv_image = itemView.findViewById(R.id.iv_image)
+    inner class ViewPagerAdapter(val paths: List<String>): PagerAdapter() {
+
+
+        override fun instantiateItem(container: ViewGroup, position: Int): Any {
+            val context: Context = container.context
+            val itemView: View = LayoutInflater.from(context).inflate(R.layout.item_banner, container, false)
+
+            val imageView: SimpleDraweeView = itemView.findViewById<View>(R.id.iv_image) as SimpleDraweeView
+            imageView.setImageURI(paths[position])
+
+            container.addView(itemView)
+
+            val exposureData = mutableMapOf<String, Any?>("viewPager" to paths[position] + "===" + position)
+            itemView?.addExposureTag(getPageCode(), exposureData)
+
+            return itemView
         }
 
-        override fun updateUI(data: String?) {
 
-            iv_image?.setImageURI(data)
+        override fun getCount(): Int {
+            return paths.size
+        }
 
-            val exposureData = mutableMapOf<String, Any?>("text" to data + "===" + networkImages.indexOf(data))
-            iv_image?.addExposureTag(getPageCode(), exposureData)
+
+        override fun isViewFromObject(view: View, `object`: Any): Boolean {
+            return view === `object`
+        }
+
+
+        override fun destroyItem(container: ViewGroup, position: Int, view: Any) {
+            container.removeView(view as View?)
         }
     }
-
 }

@@ -31,10 +31,16 @@
             android:text="列表数据"/>
 
         <Button
+            android:id="@+id/btn_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Banner"/>
+
+        <Button
             android:id="@+id/btn_view_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ViewPager"/>
+            android:text="Viewpager"/>
 
 
     </LinearLayout>

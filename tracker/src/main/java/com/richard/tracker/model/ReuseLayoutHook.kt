@@ -51,14 +51,12 @@ class ReuseLayoutHook(
 
         override fun hookView(view: View?) {
             val viewPager: ViewPager = view as ViewPager
-            val tag: Any = viewPager.getTag(HOOK_VIEW_TAG)
-            if (tag != null && tag !is Boolean) {
+            val tag: Any = viewPager.getTag(HOOK_VIEW_TAG)?: false
+
+            if (tag !is Boolean || tag) {//添加过即返回
                 return
             }
-            val added = tag as Boolean
-            if (added != null && added) {
-                return
-            }
+
             viewPager.addOnPageChangeListener(ViewPagerOnPageChangeListener())
             viewPager.setTag(HOOK_VIEW_TAG, true)
             TrackerLog.d("ViewPager addOnPageChangeListener.")
