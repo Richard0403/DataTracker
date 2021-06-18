@@ -3,12 +3,11 @@ package com.richard.datatracker.ui
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.richard.datatracker.R
-import com.richard.tracker.constant.TrackerConstants
+import com.richard.datatracker.utils.ViewTagUtils.addExposureTag
 import kotlinx.android.synthetic.main.activity_common.*
 
-class CommonActivity : AppCompatActivity() {
+class CommonActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,23 +18,20 @@ class CommonActivity : AppCompatActivity() {
             startActivity(Intent(this, CoverActivity::class.java))
         }
 
-        btn_click.setTag(TrackerConstants.VIEW_TAG_UNIQUE_NAME, btn_click.hashCode().toString())
+        btn_click_3.setOnClickListener {
+            Toast.makeText(this, "点击了${btn_click_3.text}", Toast.LENGTH_SHORT).show()
+        }
+
         val exposureData1 = mutableMapOf<String, Any?>()
-        exposureData1[TrackerConstants.KEY_PAGE_CODE] = "普通页面"
-        exposureData1[TrackerConstants.KEY_PARAM] = btn_click.text
-        btn_click.setTag(TrackerConstants.TAG_EXPLORE_DATA, exposureData1)
+        exposureData1["谁点的？"] = "我也不知道"
+        btn_click.addExposureTag(getPageCode(), exposureData1)
 
-        btn_click_2.setTag(TrackerConstants.VIEW_TAG_UNIQUE_NAME, btn_click_2.hashCode().toString())
         val exposureData2 = mutableMapOf<String, Any?>()
-        exposureData2[TrackerConstants.KEY_PAGE_CODE] = "普通页面"
-        exposureData2[TrackerConstants.KEY_PARAM] = btn_click_2.text
-        btn_click_2.setTag(TrackerConstants.TAG_EXPLORE_DATA, exposureData2)
+        exposureData1["谁点的？"] = btn_click_2.text.toString() + "点击"
+        btn_click_2.addExposureTag(getPageCode(), exposureData2)
 
-        btn_click_3.setTag(TrackerConstants.VIEW_TAG_UNIQUE_NAME, btn_click_3.hashCode().toString())
         val exposureData3 = mutableMapOf<String, Any?>()
-        exposureData3[TrackerConstants.KEY_PAGE_CODE] = "普通页面"
-        exposureData3[TrackerConstants.KEY_PARAM] = btn_click_3.text
-        btn_click_3.setTag(TrackerConstants.TAG_EXPLORE_DATA, exposureData3)
-
+        exposureData1["谁点的？"] = "xxxx点的"
+        btn_click_3.addExposureTag(getPageCode(), exposureData2)
     }
 }

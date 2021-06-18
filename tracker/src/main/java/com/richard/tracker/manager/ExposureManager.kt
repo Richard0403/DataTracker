@@ -127,6 +127,8 @@ class ExposureManager {
                 model.params,
                 duration
             )
+        } else {
+            TrackerLog.d("曝光时间不足${GlobalConfig.timeThreshold}毫秒==${viewTag}")
         }
     }
 

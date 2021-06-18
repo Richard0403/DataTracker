@@ -72,10 +72,8 @@ class ClickManager {
         val view = activity.window.decorView
         val tagView: View? = null
         val clickView = getClickView(view, event, tagView)
-        if (clickView != null) {
 
-            clickView.setAccessibilityDelegate(mDelegate)
-        }
+        clickView?.accessibilityDelegate = mDelegate
     }
 
     /**

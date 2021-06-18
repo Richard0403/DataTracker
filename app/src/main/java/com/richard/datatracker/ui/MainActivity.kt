@@ -14,5 +14,13 @@ class MainActivity : AppCompatActivity() {
         btn_common.setOnClickListener {
             startActivity(Intent(this, CommonActivity::class.java))
         }
+
+        btn_scroll.setOnClickListener {
+            startActivity(Intent(this, ScrollActivity::class.java))
+        }
+
+        btn_view_pager.setOnClickListener {
+            startActivity(Intent(this, ViewPagerActivity::class.java))
+        }
     }
 }

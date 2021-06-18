@@ -19,6 +19,12 @@
             android:text="普通页面"/>
 
         <Button
+            android:id="@+id/btn_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ScrollView"/>
+
+        <Button
             android:id="@+id/btn_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
