@@ -26,5 +26,9 @@ class MainActivity : AppCompatActivity() {
         btn_view_pager.setOnClickListener {
             startActivity(Intent(this, ViewPagerActivity::class.java))
         }
+
+        btn_list.setOnClickListener {
+            startActivity(Intent(this, RecyclerActivity::class.java))
+        }
     }
 }
