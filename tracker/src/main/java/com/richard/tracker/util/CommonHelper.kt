@@ -52,6 +52,9 @@ object CommonHelper {
                 || view.getTag(TrackerConstants.TAG_EXPLORE_AND_CLICK_DATA) != null
     }
 
+    /**
+     * 采样因子计算
+     */
     fun isSamplingHit(sample: Int): Boolean {
         val rand = Random()
         val samplingSeed = rand.nextInt(100)

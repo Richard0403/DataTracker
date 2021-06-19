@@ -47,9 +47,9 @@ class TrackerFrameLayout @JvmOverloads constructor(
      */
     private var mOriY = 0f
 
-    private var mGestureDetector: GestureDetector? = null
+    private var mGestureDetector: GestureDetector
 
-    private var mReuseLayoutHook: ReuseLayoutHook? = null
+    private var mReuseLayoutHook: ReuseLayoutHook
 
 
     /**
@@ -69,7 +69,7 @@ class TrackerFrameLayout @JvmOverloads constructor(
 
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        mGestureDetector!!.onTouchEvent(ev)
+        mGestureDetector.onTouchEvent(ev)
         if (context != null && context is Activity) {
             // trigger the click event
             ClickManager.get().eventAspect(context as Activity, ev)
