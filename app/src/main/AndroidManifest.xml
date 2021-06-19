@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.RecyclerActivity"></activity>
+        <activity android:name=".ui.LayerTestActivity"></activity>
+        <activity android:name=".ui.RecyclerActivity" />
         <activity android:name=".ui.ViewPagerActivity" />
         <activity android:name=".ui.BannerActivity" />
         <activity android:name=".ui.ScrollActivity" />

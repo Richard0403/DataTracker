@@ -30,5 +30,9 @@ class MainActivity : AppCompatActivity() {
         btn_list.setOnClickListener {
             startActivity(Intent(this, RecyclerActivity::class.java))
         }
+
+        btn_layer_test.setOnClickListener{
+            startActivity(Intent(this, LayerTestActivity::class.java))
+        }
     }
 }

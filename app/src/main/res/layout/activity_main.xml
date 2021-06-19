@@ -42,6 +42,11 @@
             android:layout_height="wrap_content"
             android:text="Viewpager"/>
 
+        <Button
+            android:id="@+id/btn_layer_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="view层级测试"/>
 
     </LinearLayout>
 

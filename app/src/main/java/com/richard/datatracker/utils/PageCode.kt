@@ -20,7 +20,8 @@ object PageCode {
         "ScrollActivity" to "滚动页面",
         "ViewPagerActivity" to "viewPager页面",
         "BannerActivity" to "Banner页面",
-        "RecyclerActivity" to "列表页面"
+        "RecyclerActivity" to "列表页面",
+        "LayerTestActivity" to "层级测试"
     )
 
     fun Activity.getActivityPageCode(): String {
