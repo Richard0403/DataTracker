@@ -9,10 +9,9 @@
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
+``` java
+implementation 'com.github.Richard0403:DataTracker: [![](https://jitpack.io/v/Richard0403/DataTracker.svg)](https://jitpack.io/#Richard0403/DataTracker)'
+```
 #### 使用说明
 
 1.  xxxx
