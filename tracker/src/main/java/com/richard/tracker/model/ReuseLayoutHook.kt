@@ -1,6 +1,7 @@
 package com.richard.tracker.model
 
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.richard.tracker.constant.TrackerConstants
 import com.richard.tracker.manager.ExposureManager
@@ -37,9 +38,28 @@ class ReuseLayoutHook(
 
         mRootLayout = trackerFrameLayout
         // replace with the onFling()
-        //mList.add(new RecyclerViewHook());
+        mList.add(RecyclerViewHook());
         //mList.add(new AbsListViewHook());
         mList.add(ViewPagerHook())
+    }
+
+
+    private inner class RecyclerViewHook: ViewHookListener{
+
+        override fun isValid(view: View?): Boolean {
+            return view is RecyclerView
+        }
+
+        override fun hookView(view: View?) {
+            val recyclerView: RecyclerView  = view as RecyclerView
+            val tag: Any = recyclerView.getTag(HOOK_VIEW_TAG)?: false
+            if (tag !is Boolean || tag) {
+                return
+            }
+
+            recyclerView.addOnScrollListener(RecyclerScrollListener())
+            recyclerView.setTag(HOOK_VIEW_TAG, true)
+        }
     }
 
     private inner class ViewPagerHook : ViewHookListener {
@@ -69,6 +89,16 @@ class ReuseLayoutHook(
         for (listener in mList) {
             if (listener != null && listener.isValid(view)) {
                 listener.hookView(view)
+            }
+        }
+    }
+
+
+    private inner class RecyclerScrollListener: RecyclerView.OnScrollListener() {
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                ExposureManager.get().triggerViewCalculate(TrackerConstants.TRIGGER_VIEW_CHANGED, mRootLayout, mRootLayout.getLastVisibleViewMap());
             }
         }
     }
