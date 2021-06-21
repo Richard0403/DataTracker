@@ -176,16 +176,16 @@ class TrackerFrameLayout @JvmOverloads constructor(
         v: Float,
         v1: Float
     ): Boolean {
-        val time = System.currentTimeMillis()
-        TrackerLog.v("onFling triggerViewCalculate begin")
-        postDelayed({
-            ExposureManager.get().triggerViewCalculate(
-                TrackerConstants.TRIGGER_VIEW_CHANGED,
-                this@TrackerFrameLayout,
-                lastVisibleViewMap
-            )
-        }, 1000)
-        TrackerLog.v("onFling triggerViewCalculate end costTime=" + (System.currentTimeMillis() - time))
+//        val time = System.currentTimeMillis()
+//        TrackerLog.v("onFling triggerViewCalculate begin")
+//        postDelayed({
+//            ExposureManager.get().triggerViewCalculate(
+//                TrackerConstants.TRIGGER_VIEW_CHANGED,
+//                this@TrackerFrameLayout,
+//                lastVisibleViewMap
+//            )
+//        }, 1000)
+//        TrackerLog.v("onFling triggerViewCalculate end costTime=" + (System.currentTimeMillis() - time))
         return false
     }
 

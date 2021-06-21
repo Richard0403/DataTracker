@@ -38,7 +38,7 @@ class ReuseLayoutHook(
 
         mRootLayout = trackerFrameLayout
         // replace with the onFling()
-        mList.add(RecyclerViewHook());
+        mList.add(RecyclerViewHook())
         //mList.add(new AbsListViewHook());
         mList.add(ViewPagerHook())
     }
@@ -109,8 +109,8 @@ class ReuseLayoutHook(
         override fun onPageScrolled(
             position: Int,
             positionOffset: Float,
-            positionOffsetPixels: Int
-        ) {
+            positionOffsetPixels: Int) {
+
         }
 
         override fun onPageSelected(position: Int) {
