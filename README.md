@@ -2,7 +2,7 @@
 
 #### 介绍
 
-数据打点工具
+Android 数据曝光、打点工具
 
 **支持的控件** 普通View,  ViewPager, RecyclerView, Fragment，View各种嵌套
 
@@ -11,6 +11,13 @@
 #### 安装教程
 
 [![](https://jitpack.io/v/Richard0403/DataTracker.svg)](https://jitpack.io/#Richard0403/DataTracker)
+
+project下的build.gradle 中添加
+
+```
+ maven { url 'https://jitpack.io' }
+```
+module下的build.gradle添加
 
 ```
 implementation'com.github.Richard0403:DataTracker:latest
