@@ -1,5 +1,8 @@
 package com.richard.tracker.util
 
+import com.richard.tracker.manager.TrackerManager
+import java.lang.IllegalArgumentException
+
 /**
  ***************************************
  * 项目名称:DataTracker
@@ -14,10 +17,15 @@ object TrackerUtil {
 
     fun trackClickData(clickData: MutableMap<String, Any?>?) {
         TrackerLog.d("点击数据："+ clickData.toString())
+        TrackerManager.get().commitListener?.commitClickData(clickData)
     }
 
-    fun trackExploreData(exposureData: MutableMap<String, Any?>?, exposureTime: Long) {
-        TrackerLog.d("曝光时间==$exposureTime===" + "曝光数据："+ exposureData.toString())
+    fun trackExploreData(exposureData: MutableList<MutableMap<String, Any?>?>) {
+        if (exposureData.isEmpty()) {
+            throw IllegalArgumentException("传入曝光数据为空，不合法")
+        }
+        TrackerLog.d("曝光数据：$exposureData")
+        TrackerManager.get().commitListener?.commitExposureData(exposureData)
     }
 
 

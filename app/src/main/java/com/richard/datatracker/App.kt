@@ -1,8 +1,10 @@
 package com.richard.datatracker
 
 import android.app.Application
+import android.util.Log
 import androidx.multidex.MultiDexApplication
 import com.facebook.drawee.backends.pipeline.Fresco
+import com.richard.tracker.api.OnCommitListener
 import com.richard.tracker.manager.TrackerManager
 
 /**
@@ -25,7 +27,18 @@ class App: MultiDexApplication() {
             this,
             trackerOpen = true,
             trackerExposureOpen = true,
-            logOpen = true)
+            logOpen = true,
+            onCommitListener = object : OnCommitListener {
+                override fun commitClickData(clickData: MutableMap<String, Any?>?) {
+                    //点击数据
+                    Log.i("commitClickData", "commitClickData==$clickData")
+                }
+
+                override fun commitExposureData(exposureData: MutableList<MutableMap<String, Any?>?>) {
+                    //曝光数据
+                    Log.i("commitExposureData", "commitExposureData==$exposureData")
+                }
+            })
     }
 
 }

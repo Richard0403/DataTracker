@@ -10,6 +10,7 @@ import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import com.richard.tracker.api.IDataCommit
+import com.richard.tracker.api.OnCommitListener
 import com.richard.tracker.api.impl.DataCommitImpl
 import com.richard.tracker.constant.GlobalConfig
 import com.richard.tracker.ui.TrackerFrameLayout
@@ -32,17 +33,22 @@ class TrackerManager {
 
     private var trackerCommit: IDataCommit? = null
 
+    var commitListener: OnCommitListener? = null
 
     fun initTracker(
         application: Application,
         trackerOpen: Boolean,
         trackerExposureOpen: Boolean,
-        logOpen: Boolean
+        logOpen: Boolean,
+        onCommitListener: OnCommitListener
     ) {
         GlobalConfig.mApplication = application
         GlobalConfig.trackerOpen = trackerOpen
         GlobalConfig.trackerExposureOpen = trackerExposureOpen
         GlobalConfig.logOpen = logOpen
+
+        this.commitListener = onCommitListener
+
         if (GlobalConfig.trackerOpen || GlobalConfig.trackerExposureOpen) {
             mActivityLifecycle = ActivityLifecycleForTracker()
             application.registerActivityLifecycleCallbacks(mActivityLifecycle)

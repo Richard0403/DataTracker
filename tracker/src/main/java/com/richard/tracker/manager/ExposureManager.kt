@@ -38,7 +38,7 @@ class ExposureManager {
 
     private lateinit var exposureHandler: Handler
 
-    var commitLogs: MutableMap<String, CommitLog> = mutableMapOf()
+    var commitLogs: MutableList<MutableMap<String, Any?>?> = mutableListOf()
 
 
     init {
@@ -73,22 +73,12 @@ class ExposureManager {
                         }
                     }
                     BATCH_COMMIT_EXPOSURE -> {
-                        for (commitLog in commitLogs.values) {
-                            // the exposure times inside page
-                            commitLog.argsInfo.put(
-                                "exposureTimes",
-                                commitLog.exposureTimes.toString()
-                            )
-                            // Scene 3 (switch back and forth when press Home button) is excluded.
-                            TrackerUtil.trackExploreData(
-                                commitLog.argsInfo,
-                                commitLog.totalDuration
-                            )
-                            TrackerLog.v(
-                                "onActivityPaused batch commit " + "pageName=" + commitLog.pageName + ",viewName=" + commitLog.viewName
-                                        + ",totalDuration=" + commitLog.totalDuration + ",args=" + commitLog.argsInfo.toString()
-                            )
-                        }
+
+
+                        // Scene 3 (switch back and forth when press Home button) is excluded.
+                        TrackerUtil.trackExploreData(commitLogs)
+
+                        TrackerLog.v("onActivityPaused batch commit")
 
                         // clear after committed.
                         commitLogs.clear()
