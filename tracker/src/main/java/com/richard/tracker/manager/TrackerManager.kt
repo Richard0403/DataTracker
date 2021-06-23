@@ -39,6 +39,7 @@ class TrackerManager {
         application: Application,
         trackerOpen: Boolean,
         trackerExposureOpen: Boolean,
+        batchOpen: Boolean,
         logOpen: Boolean,
         onCommitListener: OnCommitListener
     ) {
@@ -46,6 +47,7 @@ class TrackerManager {
         GlobalConfig.trackerOpen = trackerOpen
         GlobalConfig.trackerExposureOpen = trackerExposureOpen
         GlobalConfig.logOpen = logOpen
+        GlobalConfig.batchOpen = batchOpen
 
         this.commitListener = onCommitListener
 

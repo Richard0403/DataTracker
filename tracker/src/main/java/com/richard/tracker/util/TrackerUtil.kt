@@ -21,11 +21,10 @@ object TrackerUtil {
     }
 
     fun trackExploreData(exposureData: MutableList<MutableMap<String, Any?>?>) {
-        if (exposureData.isEmpty()) {
-            throw IllegalArgumentException("传入曝光数据为空，不合法")
-        }
         TrackerLog.d("曝光数据：$exposureData")
-        TrackerManager.get().commitListener?.commitExposureData(exposureData)
+        if (exposureData.isNotEmpty()) {
+            TrackerManager.get().commitListener?.commitExposureData(exposureData)
+        }
     }
 
 

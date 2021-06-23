@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.multidex.MultiDexApplication
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.richard.tracker.api.OnCommitListener
+import com.richard.tracker.constant.GlobalConfig
 import com.richard.tracker.manager.TrackerManager
 
 /**
@@ -28,6 +29,7 @@ class App: MultiDexApplication() {
             trackerOpen = true,
             trackerExposureOpen = true,
             logOpen = true,
+            batchOpen = true,
             onCommitListener = object : OnCommitListener {
                 override fun commitClickData(clickData: MutableMap<String, Any?>?) {
                     //点击数据
