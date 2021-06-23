@@ -28,10 +28,21 @@ implementation'com.github.Richard0403:DataTracker:latest
 
 	```kotlin
 	 TrackerManager.get().initTracker(
-	            this,
-	            trackerOpen = true,
-	            trackerExposureOpen = true,
-	            logOpen = true)
+                 this,
+                 trackerOpen = true,
+                 trackerExposureOpen = true,
+                 logOpen = true,
+                 onCommitListener = object : OnCommitListener {
+                     override fun commitClickData(clickData: MutableMap<String, Any?>?) {
+                         //点击数据
+                         Log.i("commitClickData", "commitClickData==$clickData")
+                     }
+     
+                     override fun commitExposureData(exposureData: MutableList<MutableMap<String, Any?>?>) {
+                         //曝光数据
+                         Log.i("commitExposureData", "commitExposureData==$exposureData")
+                     }
+                 })
 	```
 2. 给view设置唯一标志, 此处选用了view的hashCode作为view唯一的value值
 
