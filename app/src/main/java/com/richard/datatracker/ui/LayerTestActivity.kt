@@ -36,7 +36,7 @@ class LayerTestActivity : BaseActivity() {
                     (layoutParams as ViewGroup.MarginLayoutParams).topMargin = 100
                 }
                 val exposureData = mutableMapOf<String, Any?>("LayerTestActivity" to button.text)
-                button.addExposureOrClickTag(getPageCode(), exposureData)
+                button.addExposureOrClickTag(getPageCode(), "clickAndShow", exposureData)
 
                 parentView.addView(button)
             }

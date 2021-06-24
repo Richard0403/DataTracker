@@ -43,6 +43,8 @@ object TrackerConstants {
 
     //pageCode
     const val KEY_PAGE_CODE = "page_code"
+    //eventName
+    const val KEY_EVENT = "event"
     //params
     const val KEY_PARAM = "params"
 

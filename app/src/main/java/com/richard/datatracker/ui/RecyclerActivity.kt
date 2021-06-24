@@ -60,7 +60,7 @@ class RecyclerActivity : BaseActivity() {
             iv_image.setImageURI(item)
 
             val exposureData = mutableMapOf<String, Any?>("RecyclerView" to item + "===" + holder.adapterPosition)
-            holder.itemView.addExposureOrClickTag(getPageCode(), exposureData)
+            holder.itemView.addExposureOrClickTag(getPageCode(), "clickAndShow", exposureData)
 
         }
 

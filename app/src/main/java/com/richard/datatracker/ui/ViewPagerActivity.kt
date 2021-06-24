@@ -50,7 +50,7 @@ class ViewPagerActivity : BaseActivity() {
             container.addView(itemView)
 
             val exposureData = mutableMapOf<String, Any?>("viewPager" to paths[position] + "===" + position)
-            imageView.addExposureOrClickTag(getPageCode(), exposureData)
+            imageView.addExposureOrClickTag(getPageCode(), "Show",exposureData)
 
             return itemView
         }

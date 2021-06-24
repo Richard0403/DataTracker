@@ -67,7 +67,7 @@ class BannerActivity : BaseActivity() {
             iv_image?.setImageURI(data)
 
             val exposureData = mutableMapOf<String, Any?>("text" to data + "===" + networkImages.indexOf(data))
-            iv_image?.addExposureOrClickTag(getPageCode(), exposureData)
+            iv_image?.addExposureOrClickTag(getPageCode(), "click",  exposureData)
         }
     }
 

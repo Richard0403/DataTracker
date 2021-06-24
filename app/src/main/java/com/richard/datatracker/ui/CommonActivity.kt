@@ -24,14 +24,14 @@ class CommonActivity : BaseActivity() {
 
         val exposureData1 = mutableMapOf<String, Any?>()
         exposureData1["谁点的？"] = "我也不知道"
-        btn_click.addExposureOrClickTag(getPageCode(), exposureData1)
+        btn_click.addExposureOrClickTag(getPageCode(),"clickAndShow", exposureData1)
 
         val exposureData2 = mutableMapOf<String, Any?>()
         exposureData1["谁点的？"] = btn_click_2.text.toString() + "点击"
-        btn_click_2.addExposureOrClickTag(getPageCode(), exposureData2)
+        btn_click_2.addExposureOrClickTag(getPageCode(), "clickAndShow", exposureData2)
 
         val exposureData3 = mutableMapOf<String, Any?>()
         exposureData1["谁点的？"] = "xxxx点的"
-        btn_click_3.addExposureOrClickTag(getPageCode(), exposureData2)
+        btn_click_3.addExposureOrClickTag(getPageCode(), "clickAndShow", exposureData2)
     }
 }

@@ -32,6 +32,7 @@ implementation'com.github.Richard0403:DataTracker:latest
                  trackerOpen = true,
                  trackerExposureOpen = true,
                  logOpen = true,
+                 batchOpen = true,
                  onCommitListener = object : OnCommitListener {
                      override fun commitClickData(clickData: MutableMap<String, Any?>?) {
                          //点击数据
