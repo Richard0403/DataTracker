@@ -40,4 +40,5 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     implementation 'com.bigkoo:convenientbanner:2.1.5'
     implementation 'com.facebook.fresco:fresco:2.5.0'
+    implementation 'com.alibaba:fastjson:1.1.71.android'
 }
