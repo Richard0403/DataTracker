@@ -48,9 +48,7 @@ implementation'com.github.Richard0403:DataTracker:latest
 2. 给view设置唯一标志, 此处选用了view的hashCode作为view唯一的value值
 
 	```
-	private fun setUniqueNameTag (view: View) {
-        view.setTag(TrackerConstants.VIEW_TAG_UNIQUE_NAME, view.hashCode().toString())
-    }
+	 view.setTag(TrackerConstants.VIEW_TAG_UNIQUE_NAME, view.hashCode().toString())
 	```
 3. 给view设置需要上传的参数
 
